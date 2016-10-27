@@ -13,6 +13,11 @@ nav {
     width: 200px;
 }
 
+img {
+    max-width: 400px;
+    max-height: 300px;
+}
+
 .nav-container {
     position: relative;
 }
