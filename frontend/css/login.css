@@ -1,3 +1,27 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    margin-bottom: 120px;
+}
+
+nav {
+    /*display: block;*/
+    position: absolute;
+    left: 0px;
+    width: 200px;
+}
+
+.nav-container {
+    position: relative;
+}
+
+section {
+    /* position is static by default */
+    margin-left: 200px;
+}
+
 input:required {
     border: 1px solid red;
 }
@@ -11,6 +35,8 @@ input:required {
     display: inline;
     float: left;
 }
+
+section {}
 
 label {
     display: block;
@@ -33,4 +59,13 @@ label {
     margin-top: 15px;
     border-radius: 3px;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-color: white;
+    width: 100%;
 }
