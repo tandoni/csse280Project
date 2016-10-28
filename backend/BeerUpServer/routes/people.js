@@ -28,20 +28,26 @@ router.route('/')
     });
   })
   .post(function (req, res) {
-    mongoose.model('People').create({
-      username: req.body.username,
-      hashedPassword: req.body.hashedPassword
-    }, function(err, people) {
-      if (err) {
-        res.send('Problem adding contact to db...');
-      } else {
-        res.format({
-          json: function() {
-            res.json(people);
-          }
-        });
-      }
-    });
+    var username = req.body.username;
+    var pass = req.body.hashedPassword;
+    if (username !== '' && pass !== '') {
+      mongoose.model('People').create({
+        username: req.body.username,
+        hashedPassword: req.body.hashedPassword
+      }, function(err, people) {
+        if (err) {
+          res.send('Problem adding contact to db...');
+        } else {
+          res.format({
+            json: function() {
+              res.json(people);
+            }
+          });
+        }
+      });
+    } else {
+      res.send('Empty input fields');
+    }
   });
 
 // router.param('username', function (req, res, next, username) {
@@ -65,10 +71,13 @@ router.route('/')
 //     });
 // });
 
-router.route('/:username/:password')
-  .get(function (req, res) {
+router.route('/login/:username/:password')
+  .post(function (req, res) {
     console.log(req.params.username);
-      mongoose.model('People').findOne({ username: req.params.username, hashedPassword: req.params.password }, function (err, user) {
+    var username = req.params.username;
+    var pass = req.params.password;
+    if (username !== '' && pass !== '') {
+      mongoose.model('People').findOne({ username: username, hashedPassword: pass }, function (err, user) {
           if (err) {
               res.status(404);
               err = new Error('GET error, problem retrieving data');
@@ -97,6 +106,9 @@ router.route('/:username/:password')
             }
           }
       });
+    } else {
+      res.send('Empty input fields');
+    }
   });
 
 

@@ -13,3 +13,17 @@ $(".login").submit(function(){
   $("input").css({"border-color":"#2ecc71"});
   return false;
 });
+
+$('#login').on('click', function() {
+  console.log('clicked');
+  $.ajax({
+    url: 'http://127.0.0.1:3000/people/login/'+$('#username').val()+'/'+$('#password').val(),
+    type: 'POST',
+    success: function(data) {
+        alert(data);
+    },
+    error: function(request, status, error) {
+        alert(error);
+    }
+  });
+});

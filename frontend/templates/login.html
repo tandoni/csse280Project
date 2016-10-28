@@ -19,18 +19,16 @@
 
     <section class="loginform">
         <img src="../images/craft-beer.jpg" alt="beer" />
-        <form name="login">
             <ul>
                 <li><label for="username">Username</label>
-                    <input type="text" name="username" placeholder="username" required></li>
+                    <input type="text" id="username" name="username" placeholder="username" required></li>
                 <li><label for="password">Password</label>
-                    <input type="password" name="password" placeholder="password" required></li>
+                    <input type="password" id="password" name="password" placeholder="password" required></li>
                 <li>
-                    <input type="submit" value="Sign Up"></li>
+                    <button type="button" id="signUp">Sign Up</button></li>
                 <li>
-                    <input type="submit" value="Login"></li>
+                    <button type="button" id="login">Login></button></li>
             </ul>
-        </form>
     </section>
     <br>
     <br>
@@ -39,7 +37,7 @@
         Read more at <a href="https://github.com/tandoni/csse280Project" target="_blank">Github Page</a>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>
