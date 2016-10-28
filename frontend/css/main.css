@@ -1,6 +1,6 @@
 input {
     width: 250px;
-    height: 60px;
+    height: 65px;
     margin-bottom: 10px;
     font-size: 28px;
 }
@@ -73,6 +73,7 @@ body {
 }
 
 .button span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
     position: relative;
     transition: 0.5s;
@@ -90,4 +91,24 @@ body {
 .button:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+.text-introduction-with-picture {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.text-introduction-picture {
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.text-introduction-text {
+    margin-bottom: 100px;
+    width: 850px;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 75px;
 }
