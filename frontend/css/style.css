@@ -1,0 +1,12 @@
+html {
+    /*background: url('pattern.png');*/
+    font-size: 10pt;
+}
+
+body {
+    padding-top: 50px;
+}
+
+h1 {
+    text-align: center;
+}
