@@ -4,6 +4,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -47,7 +48,7 @@ input:required {
 
 label {
     display: block;
-    color: #999;
+    color: black;
 }
 
 .loginform input:not([type=submit]) {
@@ -71,8 +72,6 @@ label {
 footer {
     position: fixed;
     bottom: 0;
-    left: 0;
-    height: 70px;
-    background-color: white;
+    margin-bottom: 5px;
     width: 100%;
 }
