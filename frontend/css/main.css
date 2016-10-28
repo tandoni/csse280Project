@@ -1,3 +1,11 @@
+html {
+    background-image: url('../images/background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 input {
     width: 250px;
     height: 65px;
@@ -5,14 +13,14 @@ input {
     font-size: 28px;
 }
 
-h {
-    font-size: 100px;
+h1 {
+    font-size: 50pt;
     color: white;
+    text-align: center;
 }
 
 body {
     vertical-align: center;
-    background-color: black;
 }
 
 .body-content {
