@@ -31,13 +31,50 @@
 </head>
 
 <body onload="startTimer()">
-    <img id="mainpage_switch_img" src="images/1.jpg" style="width:800px;height:450px;" />
-    <div class="round-button">
-        <div class="round-button-circle">
-            <a class="round-button" onclick="return displayPreviousImage();">&#8593</a>
-        </div>
-        <div class="round-button-circle">
-            <a class="round-button" onclick="return displayNextImage();">&#8595</a>
+
+    <div>
+        <h>Beer Up</h><br/>
+        <div class="body-content">
+            <div class="menu-buttons">
+                <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="index.html">
+                        <span >RECOMMEND</span>
+                    </a>
+                </button>
+                <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="index.html">
+                        <span >REVIEW</span>
+                    </a>
+                </button>
+                <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="index.html">
+                        <span >REGISTER</span>
+                    </a>
+                </button>
+                <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="index.html">
+                        <span >LOGIN</span>
+                    </a>
+                </button>
+                <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="index.html">
+                        <span >SEARCH</span>
+                    </a>
+                </button>
+                <input type="text" name="search">
+            </div>
+            <br/>
+            <div class="main-image-block">
+                <img id="mainpage_switch_img" src="images/1.jpg" style="width:1200px;height:675px;" />
+            </div>
+            <div class="round-button">
+                <div class="round-button-circle">
+                    <a class="round-button" onclick="return displayPreviousImage();">&#8593</a>
+                </div>
+                <div class="round-button-circle">
+                    <a class="round-button" onclick="return displayNextImage();">&#8595</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

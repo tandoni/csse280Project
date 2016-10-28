@@ -1,7 +1,26 @@
-#mainpage_switch_img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+input {
+    width: 250px;
+    height: 60px;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+h {
+    font-size: 100px;
+    color: white;
+}
+
+body {
+    vertical-align: center;
+    background-color: black;
+}
+
+.body-content {
+    margin-left: 100px;
+}
+
+.main-image-block {
+    display: inline-block;
 }
 
 .round-button {
@@ -37,4 +56,38 @@
     font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
+}
+
+.button {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 250px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.button span {
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+    color: white;
+}
+
+.nounderline {
+    text-decoration: none;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
 }
