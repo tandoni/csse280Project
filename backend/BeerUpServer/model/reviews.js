@@ -6,10 +6,10 @@ var beerUpSchema  = new mongoose.Schema({
     lastName: String,
     beerName: String,
     breweryName: String,
-    breweryAddress: String
-    rating: Double,
+    breweryAddress: String,
+    rating: Number,
     review: String
 });
 
-mongoose.model('BeerUp', beerUpSchema);
+mongoose.model('Review', beerUpSchema);
 

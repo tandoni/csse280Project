@@ -4,7 +4,10 @@ $('#login').on('click', function() {
         url: 'http://127.0.0.1:3000/people/login/' + $('#username').val() + '/' + $('#password').val(),
         type: 'POST',
         success: function(data) {
-            alert(data);
+            var expire = new Date().getTime() + 86400
+            var forLocal = {token: data.token, expire: expire};
+            localStorage.setItem("webToken", JSON.stringify(forLocal));
+            console.log(data);
         },
         error: function(request, status, error) {
             alert(error);

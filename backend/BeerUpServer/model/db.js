@@ -67,5 +67,5 @@ process.on('SIGTERM', function() {
 // BRING IN YOUR SCHEMAS & MODELS
 // Use plural form of name
 require('./people');
-// require('./datum');
+require('./reviews');
 

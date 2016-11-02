@@ -4,6 +4,8 @@ var express = require('express'),
     bodyParser = require('body-parser'), // parse info from POST
     methodOverride = require('method-override');  // used to manipulate POST data
 
+var jwt =  require('jsonwebtoken');
+
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function (req, res) {
     if (req.body && typeof req.body == 'object' && '_method' in req.body) {
@@ -26,50 +28,30 @@ router.route('/')
         });
       }
     });
-  })
+});
+
+router.route('/register/:firstname/:lastname/:username/:password')
   .post(function (req, res) {
-    var username = req.body.username;
-    var pass = req.body.hashedPassword;
-    if (username !== '' && pass !== '') {
-      mongoose.model('People').create({
-        username: req.body.username,
-        hashedPassword: req.body.hashedPassword
-      }, function(err, people) {
-        if (err) {
-          res.send('Problem adding contact to db...');
-        } else {
-          res.format({
-            json: function() {
-              res.json(people);
-            }
-          });
-        }
+    var firstName = req.params.firstname;
+    var lastName = req.params.lastname;
+    var username = req.params.username;
+    var pass = req.params.password;
+    if (username !== '' && pass !== '' && firstName !== '' && lastName != '') {
+      mongoose.model('People').create({ firstName: firstName, lastName: lastName, username: username, hashedPassword: pass }, function (err, user) {
+          if (err) {
+                res.send('Problem adding user to db.');
+            } else {
+                res.format({
+                    json: function () {
+                        res.json(user);
+                    }
+                });
+          }
       });
     } else {
       res.send('Empty input fields');
     }
-  });
-
-// router.param('username', function (req, res, next, username) {
-//   // console.log(username);
-//     mongoose.model('People').find({"username": username}, function (err, user) {
-//         if (err || user === null) {
-//             res.status(404);
-//             err = new Error('Not Found');
-//             err.status = 404;
-//             res.format({
-//                 json: function () {
-//                     res.json({ message: err.status + ' ' + err });
-//                 }
-//             });
-//         } else {
-//             req.username = username;
-//             console.log("blah" + req.username);
-//             next();
-//             console.log('gets here');
-//         }
-//     });
-// });
+});
 
 router.route('/login/:username/:password')
   .post(function (req, res) {
@@ -98,11 +80,15 @@ router.route('/login/:username/:password')
                     }
                 });
             } else {
-              // res.format({
-              //     json: function () {
-                      res.send("Authorized.. Yayyy!!!");
-                  // }
-              // });
+                var token = jwt.sign(user, 'secret', {
+                  expiresIn: 86400 // expires in 24 hours
+                });
+
+                res.json({
+                  success: true,
+                  message: 'Enjoy your token!',
+                  token: token
+                });
             }
           }
       });
@@ -113,3 +99,4 @@ router.route('/login/:username/:password')
 
 
   module.exports = router;
+  
