@@ -62,3 +62,12 @@ $(window).on('load', function() {
     //load in initial state
     setup();
 });
+
+$('#submit').on('click', function() {
+    q = $('#text-area').val();
+    a = "you";
+    s = $('[name="score"] option:selected').val();
+    object = { quote: q, author: a, score: s };
+    ALL_QUOTES.push(object);
+    displayQuotes(ALL_QUOTES);
+});

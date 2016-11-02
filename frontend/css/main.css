@@ -6,6 +6,24 @@ html {
     background-size: cover;
 }
 
+div.author-quote {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+div.author-quote:hover {
+    background-color: #ededed;
+}
+
+span.quote-author-name {
+    text-align: right;
+    font-weight: bold;
+    display: block;
+}
+
 input {
     width: 250px;
     height: 65px;
