@@ -17,7 +17,7 @@ router.use(methodOverride(function (req, res) {
 
 router.route('/')
   .get(function(req, res, next) {
-    mongoose.model('Beer').find({}, function(err, reviews) {
+    mongoose.model('Review').find({}, function(err, reviews) {
       if (err) {
         console.log(err);
       } else {
@@ -30,12 +30,12 @@ router.route('/')
     });
 });
 
-router.route('/addreview/:webtoken/:beername/:breweryaddress/:rating/:review')
+router.route('/addreview/:webtoken/:beername/:breweryname/:rating/:review')
   .post(function (req, res) {
     var webToken = req.params.webtoken;
     var username = 'ishank';
     var beerName = req.params.beername;
-    var breweryAddress = req.params.breweryaddress;
+    var breweryName = req.params.breweryname;
     var rating = req.params.rating;
     var review = req.params.review;
 
@@ -57,7 +57,7 @@ router.route('/addreview/:webtoken/:beername/:breweryaddress/:rating/:review')
         lastName: userInfo.lastName,
         username: username,
         beerName: beerName,
-        breweryAddress: breweryAddress,
+        breweryName: breweryName,
         rating: rating,
         review: review
       }, function (err, review) {

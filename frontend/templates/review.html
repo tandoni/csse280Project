@@ -4,60 +4,40 @@
 
 <head>
     <title>change picture</title>
-    <link href="../css/main.css" rel="stylesheet">
-    <script type="text/javascript">
-        function displayNextImage() {
-            x = (x === images.length - 1) ? 0 : x + 1;
-            document.getElementById("mainpage_switch_img").src = images[x];
-            return false;
-        }
-
-        function displayPreviousImage() {
-            x = (x <= 0) ? images.length - 1 : x - 1;
-            document.getElementById("mainpage_switch_img").src = images[x];
-            return false;
-        }
-
-        function startTimer() {
-            setInterval(displayNextImage, 5000);
-        }
-
-        var images = [],
-            x = -1;
-        images[0] = "../images/1.jpg";
-        images[1] = "../images/2.gif";
-        images[2] = "../images/3.jpeg";
-    </script>
+    <link href="../css/review.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/main.js"></script> -->
+    <script type="text/javascript" src="../js/review.js"></script>
 </head>
 
-<body onload="startTimer()">
+<body>
 
     <div>
-        <h>Beer Up</h><br/>
+        <h1>Beer Up</h1><br/>
         <div class="body-content">
             <div class="menu-buttons">
                 <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="index.html">
+                    <a class = "nounderline" href="../index.html">
                         <span >RECOMMEND</span>
                     </a>
                 </button>
                 <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="index.html">
+                    <a class = "nounderline" href="review.html">
                         <span >REVIEW</span>
                     </a>
                 </button>
                 <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="index.html">
+                    <a class = "nounderline" href="./register.html">
                         <span >REGISTER</span>
                     </a>
                 </button>
                 <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="index.html">
+                    <a class = "nounderline" href="./login.html">
                         <span >LOGIN</span>
                     </a>
                 </button>
                 <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="index.html">
+                    <a class = "nounderline" href="../index.html">
                         <span >SEARCH</span>
                     </a>
                 </button>
@@ -66,6 +46,21 @@
             <br/>
 
         </div>
+    </div>
+
+    <div class="form-style">
+      <legend><span class="number">1</span> Add Review!</legend>
+      <input type="text" id="beerName" name="field1" placeholder="Beer Name *">
+      <input type="text" id="breweryName" name="field2" placeholder="Brewery Name *">
+      <select id="rating" name="field4">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <textarea name="field3" id="review" placeholder="Review *"></textarea>
+      <button id="addReview" type="button">Add review!</button>
     </div>
 </body>
 
