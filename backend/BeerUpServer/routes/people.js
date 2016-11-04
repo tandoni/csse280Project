@@ -4,7 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'), // parse info from POST
     methodOverride = require('method-override');  // used to manipulate POST data
 
-var jwt =  require('jsonwebtoken');
+var jwt = require('./JWT.js');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function (req, res) {
@@ -80,9 +80,7 @@ router.route('/login/:username/:password')
                     }
                 });
             } else {
-                var token = jwt.sign(user, 'secret', {
-                  expiresIn: 86400 // expires in 24 hours
-                });
+                var token = jwt.generateToken(user);
 
                 res.json({
                   success: true,

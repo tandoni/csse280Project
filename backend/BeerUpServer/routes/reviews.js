@@ -4,7 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'), // parse info from POST
     methodOverride = require('method-override');  // used to manipulate POST data
 
-var jwt =  require('jsonwebtoken');
+var JWT =  require('./JWT.js');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function (req, res) {
@@ -16,58 +16,60 @@ router.use(methodOverride(function (req, res) {
 }));
 
 router.route('/')
-  .get(function(req, res, next) {
-    mongoose.model('Review').find({}, function(err, reviews) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.format({
-          json: function() {
-            res.json(reviews);
-          }
-        });
-      }
-    });
-});
-
-router.route('/addreview/:webtoken/:beername/:breweryname/:rating/:review')
-  .post(function (req, res) {
-    var webToken = req.params.webtoken;
-    var username = 'ishank';
-    var beerName = req.params.beername;
-    var breweryName = req.params.breweryname;
-    var rating = req.params.rating;
-    var review = req.params.review;
-
-    var userInfo = {};
-    console.log(username);
-    mongoose.model('People').findOne({username: username}, function(err, user) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(user);
-        userInfo = {username: username, firstName: user.firstName, lastName: user.lastName};
-      }
-    });
-
-    if (userInfo != {}) {
-      mongoose.model('Review')
-      .create({
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        username: username,
-        beerName: beerName,
-        breweryName: breweryName,
-        rating: rating,
-        review: review
-      }, function (err, review) {
-          if (err) {
-                res.send('Problem adding review to db.');
-            } else {
-                res.json({success: true, review});
-          }
+  .get(function(req, res) {
+    var tokenResponse = JWT.verifyToken(req.body.webToken);
+    if (tokenResponse.success === true) {
+      mongoose.model('Review').find({}, function(err, reviews) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.format({
+            json: function() {
+              res.json(reviews);
+            }
+          });
+        }
       });
     }
+});
+
+router.route('/addreview/:beername/:breweryname/:rating/:review')
+  .post(function (req, res) {
+    // console.log('\n\nBODY IS: ' + req.body.webToken + '\n\n');
+    var webToken = req.body.webToken;
+
+    JWT.verifyToken(webToken).then(function(tokenResponse) {
+      console.log('\n\n\ntoken response is:    ' + tokenResponse.success + '\n\n\n\n');
+      if (tokenResponse.success === true) {
+        var username = tokenResponse.decoded.username;
+        var beerName = req.params.beername;
+        var breweryName = req.params.breweryname;
+        var rating = req.params.rating;
+        var review = req.params.review;
+
+        var userInfo = { username: tokenResponse.decoded.username, firstName: tokenResponse.decoded.firstName, lastName: tokenResponse.decoded.lastName};
+        console.log(userInfo);
+        if (userInfo != {}) {
+          mongoose.model('Review').create({
+            firstName: userInfo.firstName,
+            lastName: userInfo.lastName,
+            userName: userInfo.username,
+            beerName: beerName,
+            breweryName: breweryName,
+            rating: rating,
+            review: review
+          }, function (err, review) {
+              if (err) {
+                    res.send('Problem adding review to db.');
+                } else {
+                    res.json({success: true, review });
+              }
+          });
+        }
+      } else {
+        res.send('Token has expired.');
+      }
+    });
 });
 
 module.exports = router;
