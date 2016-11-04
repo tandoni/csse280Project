@@ -6,7 +6,27 @@ html {
     background-size: cover;
 }
 
-div.author-quote {
+.beer-pic-block {
+    display: inline-block;
+}
+
+.beer-name {
+    font-size: 40px;
+}
+
+.beer-intro {
+    font-size: 25px;
+}
+
+.beer-info {
+    display: inline-block;
+}
+
+.beer-token {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div.beer-token {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     padding: 15px;
@@ -14,7 +34,7 @@ div.author-quote {
     font-style: italic;
 }
 
-div.author-quote:hover {
+div.beer-token:hover {
     background-color: #ededed;
 }
 
