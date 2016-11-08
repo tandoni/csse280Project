@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     $('#addReview').on('click', function() {
        console.log('asdasd');
