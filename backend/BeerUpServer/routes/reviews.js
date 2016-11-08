@@ -17,21 +17,25 @@ router.use(methodOverride(function (req, res) {
 
 router.route('/')
   .get(function(req, res) {
-    if (tokenResponse.success === true) {
-      mongoose.model('Review').find({}, function(err, reviews) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.format({
-            json: function() {
-              res.json(reviews);
-            }
-          });
-        }
-      });
-    } else {
-      res.send({message: false, description: 'Token has expired'});
-    }
+    var webToken = req.body.webToken;
+
+    JWT.verifyToken(webToken).then(function(tokenResponse) {
+      if (tokenResponse.success === true) {
+        mongoose.model('Review').find({}, function(err, reviews) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.format({
+              json: function() {
+                res.json(reviews);
+              }
+            });
+          }
+        });
+      } else {
+        res.send({message: false, description: 'Token has expired'});
+      }
+    });
 });
 
 router.route('/addreview/:beername/:breweryname/:rating/:review')
