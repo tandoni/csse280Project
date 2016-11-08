@@ -92,7 +92,7 @@ footer {
     text-align: center;
     font-size: 28px;
     padding: 20px;
-    width: 200px;
+    width: 250px;
     transition: all 0.5s;
     cursor: pointer;
     margin-top: 40px;
@@ -117,4 +117,11 @@ footer {
 .button:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+input {
+    width: 250px;
+    height: 65px;
+    margin-bottom: 10px;
+    font-size: 28px;
 }
