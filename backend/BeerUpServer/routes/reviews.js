@@ -17,7 +17,6 @@ router.use(methodOverride(function (req, res) {
 
 router.route('/')
   .get(function(req, res) {
-    var tokenResponse = JWT.verifyToken(req.body.webToken);
     if (tokenResponse.success === true) {
       mongoose.model('Review').find({}, function(err, reviews) {
         if (err) {
@@ -30,6 +29,8 @@ router.route('/')
           });
         }
       });
+    } else {
+      res.send({message: false, description: 'Token has expired'});
     }
 });
 
@@ -67,7 +68,7 @@ router.route('/addreview/:beername/:breweryname/:rating/:review')
           });
         }
       } else {
-        res.send('Token has expired.');
+        res.send({message: false, description: 'Token has expired'});
       }
     });
 });
