@@ -1,7 +1,7 @@
 $('#login').on('click', function() {
     console.log('clicked');
     $.ajax({
-        url: 'http://127.0.0.1:3000/people/login/' + $('#username').val() + '/' + $('#password').val(),
+        url: 'https://csse280-beerup-backend.herokuapp.com/people/login/' + $('#username').val() + '/' + $('#password').val(),
         type: 'POST',
         success: function(data) {
             var expire = new Date().getTime() + 86400
