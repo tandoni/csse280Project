@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Beer Up - Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Beer Up</h1>
+
+    <div class="menu-buttons">
+        <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="../index.html">
+                        <span >RECOMMEND</span>
+                    </a>
+                </button>
+        <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="./review.html">
+                        <span >REVIEW</span>
+                    </a>
+                </button>
+        <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="./login.html">
+                        <span>LOGIN</span>
+                    </a>
+                </button>
+        <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="./register.html">
+                        <span>REGISTER</span>
+                    </a>
+                </button>
+        <input type="text" name="search">
+        <button class="button" style="display: inline-block">
+                    <a class = "nounderline" href="./search.html">
+                        <span >SEARCH</span>
+                    </a>
+                </button>
+    </div>
+
+    <section class="loginform">
+        <img src="../images/craft-beer.jpg" alt="beer" />
+        <ul>
+            <li><label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="FirstName" placeholder="First Name" required></li>
+            <li><label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="LastName" placeholder="Last Name" required></li>
+            <li><label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="username" required></li>
+            <li><label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="password" required></li>
+            <li>
+                <button type="button" id="signUp">Sign Up</button></li>
+        </ul>
+    </section>
+
+    <footer>
+        Read more at <a href="https://github.com/tandoni/csse280Project" target="_blank">Github Page</a>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+html {
+    background: url('../images/background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 50pt;
+    color: white;
+    text-align: center;
+}
+
+.menu-buttons {
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+section {
+    width: 450px;
+    margin: auto;
+}
+
+form {
+    display: block;
+    margin: auto;
+}
+
+img {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    max-width: 400px;
+    max-height: 300px;
+}
+
+button:required {
+    border: 1px solid red;
+}
+
+.loginform ul {
+    padding: 0;
+    margin: 0;
+}
+
+.loginform li {
+    display: inline;
+    float: left;
+}
+
+label {
+    display: block;
+    color: black;
+}
+
+.loginform input:not([type=button]) {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(250, 250, 250, 0.5);
+}
+
+#signUp,
+#login {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #64c8ef;
+    padding: 5px 15px;
+    margin-right: 0;
+    margin-top: 15px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+
+/*from main.css*/
+
+.button {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.button span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+    color: white;
+}
+
+.nounderline {
+    text-decoration: none;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
