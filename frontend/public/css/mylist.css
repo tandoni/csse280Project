@@ -57,7 +57,7 @@
 }
 
 .form-style .number {
-    background: gold;
+    background: #1abc9c;
     color: #fff;
     height: 30px;
     width: 30px;
@@ -76,18 +76,18 @@
     padding: 19px 39px 18px 39px;
     color: #FFF;
     margin: 0 auto;
-    background: gold;
+    background: #1abc9c;
     font-size: 18px;
     text-align: center;
     font-style: normal;
     width: 100%;
-    border: 1px solid gold;
+    border: 1px solid #16a085;
     border-width: 1px 1px 3px;
     margin-bottom: 10px;
 }
 
 .form-style button:hover {
-    background: gold;
+    background: #109177;
 }
 
 
@@ -144,41 +144,6 @@ body {
 
 .main-image-block {
     display: inline-block;
-}
-
-.round-button {
-    display: inline-block;
-    width: 1.5%;
-}
-
-.round-button-circle {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-    border: 2px solid lightyellow;
-    overflow: hidden;
-    background: goldenrod;
-    box-shadow: 0 0 2px darkgoldenrod;
-}
-
-.round-button-circle:hover {
-    background: gold;
-}
-
-.round-button a {
-    display: block;
-    width: 100%;
-    padding-top: 50%;
-    padding-bottom: 50%;
-    line-height: 1em;
-    margin-top: -0.5em;
-    text-align: center;
-    color: gold;
-    font-family: Verdana;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-decoration: none;
 }
 
 .button {
@@ -238,4 +203,36 @@ h2 {
 
 #introduction_img {
     vertical-align: text-top;
+}
+
+.beer-pic-block {
+    display: inline-block;
+}
+
+.beer-name {
+    font-size: 40px;
+}
+
+.beer-intro {
+    font-size: 25px;
+}
+
+.beer-info {
+    display: inline-block;
+}
+
+.my-review-token {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div.my-review-token {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+div.my-review-token:hover {
+    background-color: #ededed;
 }
