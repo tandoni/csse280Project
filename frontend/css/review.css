@@ -57,7 +57,7 @@
 }
 
 .form-style .number {
-    background: #1abc9c;
+    background: gold;
     color: #fff;
     height: 30px;
     width: 30px;
@@ -76,24 +76,25 @@
     padding: 19px 39px 18px 39px;
     color: #FFF;
     margin: 0 auto;
-    background: #1abc9c;
+    background: gold;
     font-size: 18px;
     text-align: center;
     font-style: normal;
     width: 100%;
-    border: 1px solid #16a085;
+    border: 1px solid gold;
     border-width: 1px 1px 3px;
     margin-bottom: 10px;
 }
 
 .form-style button:hover {
-    background: #109177;
+    background: gold;
 }
 
 
 /* old */
 
 html {
+    min-width: 2000px;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -127,9 +128,10 @@ input {
 }
 
 h1 {
-    font-size: 50pt;
+    font-size: 80pt;
     color: white;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -172,7 +174,7 @@ body {
     line-height: 1em;
     margin-top: -0.5em;
     text-align: center;
-    color: lightgoldenrodyellow;
+    color: gold;
     font-family: Verdana;
     font-size: 1.5em;
     font-weight: bold;

@@ -1,4 +1,6 @@
 html {
+    /*background-color: black;*/
+    min-width: 2000px;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -19,6 +21,7 @@ html {
 }
 
 .beer-info {
+    color: black;
     display: inline-block;
 }
 
@@ -52,12 +55,14 @@ input {
 }
 
 h1 {
-    font-size: 50pt;
+    font-size: 80pt;
     color: white;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+    color: white;
     vertical-align: center;
 }
 
@@ -140,19 +145,24 @@ body {
 }
 
 .text-introduction-with-picture {
+    padding-left: 50px;
+    max-width: 1000px;
+    min-height: 1400px;
+    margin: 50px;
+    background-color: rgba(255, 215, 0, 0.4);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
 }
 
 .text-introduction-picture {
     margin-left: 50px;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 .text-introduction-text {
     margin-bottom: 100px;
     width: 850px;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 h2 {

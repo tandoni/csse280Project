@@ -94,6 +94,7 @@
 /* old */
 
 html {
+    min-width: 2000px;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -127,9 +128,10 @@ input {
 }
 
 h1 {
-    font-size: 50pt;
+    font-size: 80pt;
     color: white;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
