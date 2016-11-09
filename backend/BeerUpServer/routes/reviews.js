@@ -41,8 +41,8 @@ router.route('/')
 router.route('/addreview/:beername/:breweryname/:rating/:review')
   .post(function (req, res) {
     // console.log('\n\nBODY IS: ' + req.body.webToken + '\n\n');
-    var webToken = req.body.webToken;
-
+    var webToken = req.body.token;
+    console.log(webToken);
     JWT.verifyToken(webToken).then(function(tokenResponse) {
       console.log('\n\n\ntoken response is:    ' + tokenResponse.success + '\n\n\n\n');
       if (tokenResponse.success === true) {
