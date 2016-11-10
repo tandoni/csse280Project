@@ -41,9 +41,9 @@ function detect() {
         var buttonelement = $(
             '<div class = "welcome">' +
             greeting +
-            '&nbsp' +
+            '&nbsp<span id="loggedInUser">Welcome, ' + 
             localStorage.getItem("username") +
-            '.' +
+            '!</span>' +
             '</div>' +
             '<button class="button">' +
             '<a class = "nounderline" href="../index.html">' +
@@ -65,8 +65,12 @@ function detect() {
             '<span >LOG OUT</span>' +
             '</a>' +
             '</button>' +
+<<<<<<< HEAD
             '<input type="text" name="search">' +
             '<button class="button" >' +
+=======
+            '<button class="button" style="display: inline-block">' +
+>>>>>>> cd2792defdd6a30623c46922addfdd41f3ca9fb1
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
@@ -87,8 +91,12 @@ function detect() {
             '<span>REGISTER</span>' +
             '</a>' +
             '</button>' +
+<<<<<<< HEAD
             '<input type="text" name="search">' +
             '<button class="button" >' +
+=======
+            '<button class="button" style="display: inline-block">' +
+>>>>>>> cd2792defdd6a30623c46922addfdd41f3ca9fb1
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
@@ -101,4 +109,5 @@ function detect() {
 function logoff() {
     localStorage.clear();
     detect();
+    window.location.href = '../index.html'
 }

@@ -103,13 +103,18 @@
 /* old */
 
 html {
-    min-width: 2000px;
+    width: 100%;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     zoom: 60%;
+}
+
+#loggedInUser {
+    float: right;
+    margin-right: 40px;
 }
 
 div.author-quote {
@@ -171,7 +176,7 @@ body {
     margin-top: 5px;
 }
 
-#deleteButton, #updateButton {
+.deleteButton, .updateButton {
     margin: 2px;
     border-radius: 4px;
     background-color: #f4511e;

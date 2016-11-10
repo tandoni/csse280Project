@@ -7,17 +7,19 @@ var userChoice = 'all';
 
 // Use this to update the search string
 var searchString;
-var currQuote = '';
 
 function displayBeer(container, quote) {
     var quoteElement = $('<div class="my-review-token"><div class="my-review"><span class="beer-intro">Beer Name: ' +
       quote.beerName + '</span><br /><span class="beer-intro">Rating: ' + quote.rating +
        ' </span> <br /><span class="beer-intro">Review: ' + quote.review +
        ' </span><br /> <span class="beer-intro-user">-  ' + quote.firstName + ' ' + quote.lastName +
-        ' </span> </div><div class="review-button-block"> <button onclick="updateCurrent("' + 
-      quote._id + '")" id="updateButton">UPDATE</button> <button onclick="deleteCurrent()" id="deleteButton">DELETE</button></div></div>');
+        ' </span> </div><div class="review-button-block"> <button class="deleteButton" id="' + quote._id + '" data-reviewid="'+ quote._id+'">DELETE</button></div></div>');
     container.append(quoteElement);
-    currQuote = quote;
+    var selec = '#' + quote._id;
+    $(selec).on('click', function(e) {
+        var rev = e.target.getAttribute("data-reviewid");
+        deleteCurrent(rev);
+    })
 }
 
 function displayQuotes(quotes) {
@@ -27,18 +29,26 @@ function displayQuotes(quotes) {
     });
 }
 
-function deleteCurrent() {
-    var realIndex = -1;
-    for (i = 0; i < ALL_QUOTES.length; i++) {
-        if (ALL_QUOTES[i]._id == currQuote._id) {
-            realIndex = i;
-        }
-    }
+function updateCurrent(revId) {
     var token = JSON.parse(localStorage.getItem('webToken'));
     $.ajax({
           type: "DELETE",
           url: 'https://csse280-beerup-backend.herokuapp.com/reviews/' + token,
-          data: {id: ALL_QUOTES[realIndex]._id },
+          data: {id: revId},
+          success: function(data) {
+            console.log('review deleted');
+            displayAllQuotes();
+          },
+          dataType: 'JSON',
+    });
+}
+
+function deleteCurrent(revId) {
+    var token = JSON.parse(localStorage.getItem('webToken'));
+    $.ajax({
+          type: "DELETE",
+          url: 'https://csse280-beerup-backend.herokuapp.com/reviews/' + token,
+          data: {id: revId},
           success: function(data) {
             console.log('review deleted');
             displayAllQuotes();
@@ -99,17 +109,17 @@ function detect() {
     var date = new Date();
     var greeting = "";
     if (date.getHours() > 0 && date.getHours() < 6) {
-        greeting = "Having some beer before you sleep or keeping fit?";
+        greeting = "Have some beer before you sleep?";
     } else if (date.getHours() >= 6 && date.getHours() <= 11) {
-        greeting = "Greeting! A new day always begins with a cup of beer!";
+        greeting = "Greetings! A new day always begins with a cup of beer!";
     } else if (date.getHours() > 11 && date.getHours() <= 14) {
         greeting = "Want to have some beer during the lunch time?";
     } else if (date.getHours() > 14 && date.getHours() <= 17) {
         greeting = "Hope you don't feel thirsty without having beer in the afternoon.";
     } else if (date.getHours() > 17 && date.getHours() <= 19) {
-        greeting = "We can't have dinner without beer, don't we?";
+        greeting = "We can't have dinner without beer, can we?";
     } else {
-        greeting = "Have some beer with you friends in the evening?";
+        greeting = "Have some beer with your friends in the evening?";
     }
 
     if ((localStorage.getItem("username") != null && localStorage.getItem("username").length > 0)) {
@@ -117,9 +127,9 @@ function detect() {
         var buttonelement = $(
             '<div class = "welcome">' +
             greeting +
-            '&nbsp' +
+            '&nbsp<span id="loggedInUser">Welcome, ' + 
             localStorage.getItem("username") +
-            '.' +
+            '!</span>' +
             '</div>' +
             '<button class="button" >' +
             '<a class = "nounderline" href="../index.html">' +
@@ -136,8 +146,12 @@ function detect() {
             '<span >LOG OFF</span>' +
             '</a>' +
             '</button>' +
+<<<<<<< HEAD
             '<input type="text" name="search">' +
             '<button class="button" >' +
+=======
+            '<button class="button" style="display: inline-block">' +
+>>>>>>> cd2792defdd6a30623c46922addfdd41f3ca9fb1
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
@@ -158,8 +172,12 @@ function detect() {
             '<span>LOG IN</span>' +
             '</a>' +
             '</button>' +
+<<<<<<< HEAD
             '<input type="text" name="search">' +
             '<button class="button" >' +
+=======
+            '<button class="button" style="display: inline-block">' +
+>>>>>>> cd2792defdd6a30623c46922addfdd41f3ca9fb1
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
