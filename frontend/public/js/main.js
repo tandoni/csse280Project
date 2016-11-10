@@ -43,7 +43,7 @@ function detect() {
             '</button>' +
             '<button onclick="logoff()" class="button" style="display: inline-block">' +
             '<a class = "nounderline">' +
-            '<span >LOG OFF</span>' +
+            '<span >LOG OUT</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" name="search">' +

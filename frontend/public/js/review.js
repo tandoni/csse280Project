@@ -2,39 +2,39 @@ $(document).ready(function() {
     var name = $('#beerName').val();
     var brewery = $('#breweryName').val();
     var review = $('#review').val();
-     
-        $('#addReview').on('click', function() {
-            if (name == '' || brewery == '' || review == '') {
-                alert('Please enter all inputs');
-            } else {
+
+    $('#addReview').on('click', function() {
+        if (name == '' || brewery == '' || review == '') {
+            alert('Please enter all inputs');
+        } else {
             // console.log('asdasd');
             var token = JSON.parse(localStorage.getItem('webToken'));
             // if (token.expire > Date.now()) {
-                $.ajax({
-                    url: 'https://csse280-beerup-backend.herokuapp.com/reviews/addreview/' + name + '/' + brewery + '/' + $('#rating').val() + '/' + review,
-                    type: 'POST',
-                    data: token,
-                    success: function(data) {
-                        console.log(data);
-                        if (data.message === false) {
-                            window.location.href = "./login.html";
-                            alert('Token expired. Please login again!');
-                            localStorage.clear();
-                        } else {
-                            window.location.href = "./mylist.html";
-                        }
-                    },
-                    error: function(request, status, error) {
-                        alert(error);
+            $.ajax({
+                url: 'https://csse280-beerup-backend.herokuapp.com/reviews/addreview/' + name + '/' + brewery + '/' + $('#rating').val() + '/' + review,
+                type: 'POST',
+                data: token,
+                success: function(data) {
+                    console.log(data);
+                    if (data.message === false) {
+                        window.location.href = "./login.html";
+                        alert('Token expired. Please login again!');
+                        localStorage.clear();
+                    } else {
+                        window.location.href = "./mylist.html";
                     }
-                });
-            }
-            // } else {
-            //     window.location.href = "./login.html";
-            //     alert('Token expired. Please login again!');
-            //     localStorage.clear();
-            // }
-        });
+                },
+                error: function(request, status, error) {
+                    alert(error);
+                }
+            });
+        }
+        // } else {
+        //     window.location.href = "./login.html";
+        //     alert('Token expired. Please login again!');
+        //     localStorage.clear();
+        // }
+    });
 });
 
 function detect() {
@@ -74,7 +74,7 @@ function detect() {
             '</a>' +
             '<button onclick="logoff()" class="button" style="display: inline-block">' +
             '<a class = "nounderline">' +
-            '<span >LOG OFF</span>' +
+            '<span>LOG OUT</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" name="search">' +
