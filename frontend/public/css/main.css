@@ -8,6 +8,15 @@ html {
     background-size: cover;
 }
 
+.welcome {
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(255, 215, 0, 0.4);
+    font-size: 36px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
 .beer-pic-block {
     display: inline-block;
 }
@@ -110,6 +119,7 @@ body {
 }
 
 .button {
+    margin: 2px;
     border-radius: 4px;
     background-color: #f4511e;
     border: none;
@@ -120,7 +130,7 @@ body {
     width: 250px;
     transition: all 0.5s;
     cursor: pointer;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 .button span {
