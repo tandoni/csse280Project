@@ -180,13 +180,13 @@ body {
 }
 
 #mainpage_switch_img {
-    width:1200px;
-    height:675px;
+    width: 1200px;
+    height: 675px;
 }
 
 #mainpage_switch_img2 {
-    width:700px;
-    height:400px;
+    width: 700px;
+    height: 400px;
 }
 
 h2 {
@@ -253,4 +253,8 @@ h2 {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#menus-container button {
+    display: inline-block;
 }

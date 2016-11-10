@@ -31,23 +31,23 @@ function detect() {
             localStorage.getItem("username") +
             '.' +
             '</div>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./templates/mylist.html">' +
             '<span >MY LIST</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./templates/review.html">' +
             '<span >REVIEW</span>' +
             '</a>' +
             '</button>' +
-            '<button onclick="logoff()" class="button" style="display: inline-block">' +
+            '<button onclick="logoff()" class="button" >' +
             '<a class = "nounderline">' +
             '<span >LOG OUT</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" name="search">' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./templates/search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
@@ -58,18 +58,18 @@ function detect() {
     } else {
         var buttonContainer = $('#menu-container').empty();
         var buttonelement = $(
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./templates/login.html">' +
             '<span>LOG IN</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./templates/register.html">' +
             '<span>REGISTER</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" name="search">' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./templates/search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +

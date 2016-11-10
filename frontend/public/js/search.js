@@ -40,10 +40,10 @@ function displayBeer(container, quote) {
     document.getElementById("beer-pic-" + quote._id).src = quote.imageurl;
 }
 
-function validateImageURL(url) {    
+function validateImageURL(url) {
     var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     var image = url.substring(url.length - 4);
-    return regexp.test(url) && (image === '.png' || image === '.jpg' || image === '.gif' || image === 'jpeg');    
+    return regexp.test(url) && (image === '.png' || image === '.jpg' || image === '.gif' || image === 'jpeg');
 }
 
 function displayQuotes(quotes) {
@@ -61,8 +61,8 @@ function search() {
 function makeQuotesWhoseBeersNameStartWith(prefix) {
     var quotes = [];
     if (typeof prefix !== "undefined") {
-        for(var i = 0; i < ALL_QUOTES.length; i++) {
-            if(ALL_QUOTES[i].beer.startsWith(prefix)) {
+        for (var i = 0; i < ALL_QUOTES.length; i++) {
+            if (ALL_QUOTES[i].beer.startsWith(prefix)) {
                 quotes.push(ALL_QUOTES[i]);
             }
         }
@@ -102,7 +102,7 @@ $(window).on('load', function() {
         var beername = document.getElementById("beer").value;
         var description = document.getElementById("description").value;
         var imgURL = document.getElementById("imgURL").value;
-        if(validateImageURL(imgURL) && beername != '' && description != '') {
+        if (validateImageURL(imgURL) && beername !== '' && description != '') {
             if (token.expire > Date.now()) {
                 $.ajax({
                     url: 'https://csse280-beerup-backend.herokuapp.com/beers/addbeer/' + beername + '/' + description,
@@ -155,30 +155,30 @@ function detect() {
             localStorage.getItem("username") +
             '.' +
             '</div>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="../index.html">' +
             '<span >MAIN</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="./mylist.html">' +
             '<span >MY LIST</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="./review.html">' +
             '<span >REVIEW</span>' +
             '</a>' +
             '</button>' +
-            '<button onclick="logoff()" class="button" style="display: inline-block">' +
+            '<button onclick="logoff()" class="button">' +
             '<a class = "nounderline">' +
             '<span>LOG OUT</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" id="search">' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="./search.html">' +
-            '<span >SEARCH</span>' +
+            '<span>SEARCH</span>' +
             '</a>' +
             '</button>'
         );
@@ -187,11 +187,11 @@ function detect() {
     } else {
         var buttonContainer = $('#menu-container').empty();
         var buttonelement = $(
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="../index.html">' +
             '<span >MAIN</span>' +
             '</a>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="./login.html">' +
             '<span>LOG IN</span>' +
             '</a>' +
@@ -220,5 +220,3 @@ function logoff() {
     localStorage.clear();
     detect();
 }
-
-

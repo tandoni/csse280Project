@@ -39,28 +39,28 @@ function detect() {
             localStorage.getItem("username") +
             '.' +
             '</div>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="../index.html">' +
             '<span >MAIN</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./mylist.html">' +
             '<span >MY LIST</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./review.html">' +
             '<span >REVIEW</span>' +
             '</a>' +
             '</button>' +
-            '<button onclick="logoff()" class="button" style="display: inline-block">' +
+            '<button onclick="logoff()" class="button" >' +
             '<a class = "nounderline">' +
             '<span >LOG OUT</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" name="search">' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
@@ -71,18 +71,18 @@ function detect() {
     } else {
         var buttonContainer = $('#menu-container').empty();
         var buttonelement = $(
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="../index.html">' +
             '<span >MAIN</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./login.html">' +
             '<span>LOG IN</span>' +
             '</a>' +
             '</button>' +
             '<input type="text" name="search">' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button" >' +
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
