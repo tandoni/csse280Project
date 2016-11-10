@@ -41,7 +41,7 @@ function detect() {
             '<span >REVIEW</span>' +
             '</a>' +
             '</button>' +
-            '<button id = "logoff" class="button" style="display: inline-block">' +
+            '<button onclick="logoff()" class="button" style="display: inline-block">' +
             '<a class = "nounderline">' +
             '<span >LOG OFF</span>' +
             '</a>' +
@@ -60,7 +60,7 @@ function detect() {
         var buttonelement = $(
             '<button class="button" style="display: inline-block">' +
             '<a class = "nounderline" href="./templates/login.html">' +
-            '<span>LOGIN</span>' +
+            '<span>LOG IN</span>' +
             '</a>' +
             '</button>' +
             '<button class="button" style="display: inline-block">' +
@@ -97,6 +97,7 @@ function startTimer() {
     detect();
 }
 
-$("#logoff").on('click', function() {
-    alert("asd");
-});
+function logoff() {
+    localStorage.clear();
+    detect();
+}

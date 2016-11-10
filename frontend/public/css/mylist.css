@@ -9,6 +9,15 @@
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+.welcome {
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(255, 215, 0, 0.4);
+    font-size: 36px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
 .form-style fieldset {
     border: none;
 }
@@ -147,6 +156,7 @@ body {
 }
 
 .button {
+    margin: 2px;
     border-radius: 4px;
     background-color: #f4511e;
     border: none;
@@ -157,7 +167,7 @@ body {
     width: 250px;
     transition: all 0.5s;
     cursor: pointer;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 .button span {

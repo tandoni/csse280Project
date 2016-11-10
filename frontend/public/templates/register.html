@@ -8,42 +8,10 @@
     <link href="../css/login.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="detect()">
     <h1>Beer Up</h1>
 
-    <div class="menu-buttons">
-        <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="../index.html">
-                        <span >MAIN</span>
-                    </a>
-                </button>
-        <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="./mylist.html">
-                        <span >MY LIST</span>
-                    </a>
-                </button>
-
-        <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="./review.html">
-                        <span >REVIEW</span>
-                    </a>
-                </button>
-        <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="./login.html">
-                        <span>LOGIN</span>
-                    </a>
-                </button>
-        <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="./register.html">
-                        <span>REGISTER</span>
-                    </a>
-                </button>
-        <input type="text" name="search">
-        <button class="button" style="display: inline-block">
-                    <a class = "nounderline" href="./search.html">
-                        <span >SEARCH</span>
-                    </a>
-                </button>
+    <div id="menu-container" class="menu-buttons">
     </div>
 
     <section class="loginform">
@@ -59,8 +27,8 @@
                 <li><label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="password" required></li>
                 <li>
-                    <button class="button" id="login" style="display: inline-block">
-            <a class = "nounderline"><span >LOGIN</span></a>
+                    <button class="button" id="signUp" style="display: inline-block">
+            <a class = "nounderline"><span >REGISTER</span></a>
         </button></li>
             </ul>
         </div>
