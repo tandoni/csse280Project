@@ -4,6 +4,7 @@ $('#signUp').on('click', function() {
         url: 'https://csse280-beerup-backend.herokuapp.com/people/register/' + $('#firstName').val() + '/' + $('#lastName').val() + '/' + $('#username').val() + '/' + $('#password').val(),
         type: 'POST',
         success: function(data) {
+            alert("Register is done. Welcome!" + $('#username').val());
             console.log(data);
         },
         error: function(request, status, error) {
