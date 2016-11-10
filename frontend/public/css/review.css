@@ -103,18 +103,13 @@
 /* old */
 
 html {
-    width: 100%;
+    min-width: 2000px;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     zoom: 60%;
-}
-
-#loggedInUser {
-    float: right;
-    margin-right: 40px;
 }
 
 div.author-quote {

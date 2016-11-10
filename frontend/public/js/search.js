@@ -77,20 +77,18 @@ function setup() {
 function displayAllQuotes() {
     var token = JSON.parse(localStorage.getItem('webToken'));
     console.log(token);
-    if (token != null) {
-        $.ajax({
-            url: 'https://csse280-beerup-backend.herokuapp.com/beers/' + token.token,
-            type: 'GET',
-            success: function(data) {
-                ALL_QUOTES = data;
-                displayQuotes(ALL_QUOTES);
-            },
-            error: function(request, status, error) {
-                console.log(error);
-                console.log(status);
-            }
-        });
-    }
+    $.ajax({
+        url: 'https://csse280-beerup-backend.herokuapp.com/beers/' + token.token,
+        type: 'GET',
+        success: function(data) {
+            ALL_QUOTES = data;
+            displayQuotes(ALL_QUOTES);
+        },
+        error: function(request, status, error) {
+            console.log(error);
+            console.log(status);
+        }
+    });
 }
 
 $(window).on('load', function() {
@@ -135,17 +133,17 @@ function detect() {
     var date = new Date();
     var greeting = "";
     if (date.getHours() > 0 && date.getHours() < 6) {
-        greeting = "Have some beer before you sleep?";
+        greeting = "Having some beer before you sleep or keeping fit?";
     } else if (date.getHours() >= 6 && date.getHours() <= 11) {
-        greeting = "Greetings! A new day always begins with a cup of beer!";
+        greeting = "Greeting! A new day always begins with a cup of beer!";
     } else if (date.getHours() > 11 && date.getHours() <= 14) {
         greeting = "Want to have some beer during the lunch time?";
     } else if (date.getHours() > 14 && date.getHours() <= 17) {
         greeting = "Hope you don't feel thirsty without having beer in the afternoon.";
     } else if (date.getHours() > 17 && date.getHours() <= 19) {
-        greeting = "We can't have dinner without beer, can we?";
+        greeting = "We can't have dinner without beer, don't we?";
     } else {
-        greeting = "Have some beer with your friends in the evening?";
+        greeting = "Have some beer with you friends in the evening?";
     }
 
     if ((localStorage.getItem("username") != null && localStorage.getItem("username").length > 0)) {
@@ -153,9 +151,9 @@ function detect() {
         var buttonelement = $(
             '<div class = "welcome">' +
             greeting +
-            '&nbsp<span id="loggedInUser">Welcome, ' + 
+            '&nbsp' +
             localStorage.getItem("username") +
-            '!</span>' +
+            '.' +
             '</div>' +
             '<button class="button">' +
             '<a class = "nounderline" href="../index.html">' +
@@ -185,7 +183,6 @@ function detect() {
             '</button>'
         );
         buttonContainer.append(buttonelement);
-        document.getElementById('myBtn').style.visibility = 'visible';
 
     } else {
         var buttonContainer = $('#menu-container').empty();
@@ -212,7 +209,6 @@ function detect() {
             '</button>'
         );
         buttonContainer.append(buttonelement);
-        document.getElementById('myBtn').style.visibility = 'hidden';
     }
     $('#search').on('input', function() {
         searchString = $(this).val();
@@ -223,11 +219,4 @@ function detect() {
 function logoff() {
     localStorage.clear();
     detect();
-<<<<<<< HEAD
 }
-=======
-    window.location.href = '../index.html'
-}
-
-
->>>>>>> cd2792defdd6a30623c46922addfdd41f3ca9fb1

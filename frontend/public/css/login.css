@@ -31,7 +31,7 @@ input {
 }
 
 html {
-    width: 100%;
+    min-width: 2000px;
     min-height: 1500px;
     background: url('../images/background.jpg');
     -webkit-background-size: cover;
@@ -40,11 +40,6 @@ html {
     background-size: cover;
     font-family: sans-serif;
     zoom: 70%;
-}
-
-#loggedInUser {
-    float: right;
-    margin-right: 40px;
 }
 
 h1 {

@@ -1,6 +1,6 @@
 html {
     /*background-color: black;*/
-    width: 100%;
+    min-width: 2000px;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -26,10 +26,6 @@ html {
     font-size: 50px;
 }
 
-.addRev {
-    font-size: 20px;
-}
-
 .beer-intro {
     font-size: 40px;
 }
@@ -43,11 +39,6 @@ html {
 
 .beer-token {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-#loggedInUser {
-    float: right;
-    margin-right: 40px;
 }
 
 div.beer-token {
@@ -264,6 +255,6 @@ h2 {
     cursor: pointer;
 }
 
-#myBtn {
-    visibility: hidden;
+#menus-container button {
+    display: inline-block;
 }
