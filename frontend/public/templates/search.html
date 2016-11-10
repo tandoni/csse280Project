@@ -47,8 +47,28 @@
                 </button>
             </div>
             <br/>
-            <div id="reviews-container">
+
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn" class="button">Add Beer</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">x</span>
+                    <form>
+                        Beer Name:
+                        <input type="text" id="beer"><br /> Description:
+                        <input type="text" id="description"><br /> image URL:
+                        <input type="text" id="imgURL"><br />
+                        <button class="button" id="addbeer">Add</button>
+                    </form>
+                </div>
+
             </div>
+
+            <div id="reviews-container"></div>
         </div>
     </div>
     <br/>
