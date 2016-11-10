@@ -1,42 +1,6 @@
 var searchString;
 
-var ALL_QUOTES = [{
-        index: "0",
-        image: "../images/1.jpg",
-        introduction: "Welcome every morning with a smile. Look on the new day as another special gift from your Creator, another golden opportunity.",
-        beer: "Og Mandino"
-    },
-    {
-        index: "1",
-        image: "../images/2.gif",
-        introduction: "Happiness cannot be traveled to, owned, earned, or worn.It is the spiritual experience of living every minute with love, grace & gratitude.",
-        beer: "Denis Waitley"
-    },
-    {
-        index: "2",
-        image: "../images/3.jpeg",
-        introduction: "Though no one can go back and make a brand new start, anyone can start from now and make a brand new ending",
-        beer: "Carl Bard"
-    },
-    {
-        index: "3",
-        image: "../images/4.jpg",
-        introduction: "Accept responsibility for your life.Know that it is you who will get you where you want to go, no one else.",
-        beer: "Les Brown"
-    },
-    {
-        index: "4",
-        image: "../images/5.jpg",
-        introduction: "Surround yourself with only people who are going to lift you higher.",
-        beer: "German"
-    },
-    {
-        index: "5",
-        image: "../images/craft-beer.jpg",
-        introduction: "Nobody ever wrote down a plan to be broke, fat, lazy, or stupid.Those things are what happen when you don’t have a plan.",
-        beer: "Larry Winget"
-    }
-];
+var ALL_QUOTES = [];
 
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -69,40 +33,41 @@ window.onclick = function(event) {
 // Use this to store user's choice
 var userChoice = 'all';
 
-// Use this to update the search string
-var searchString;
-
 function displayBeer(container, quote) {
-    var quoteElement = $('<div class="beer-token"><div class ="beer-pic-block"><img id = "beer-pic-' + quote.index + '" src = "" style="width:300px;height:170px;"></div><div class = "beer-info"><div class="beer-name">' + quote.beer +
-        '</div> <span class="beer-intro"> ' + '-' + quote.introduction + '</span> </div></div>');
+    var quoteElement = $('<div class="beer-token"><div class ="beer-pic-block"><img id = "beer-pic-' + quote._id + '" src ="' + quote.imageurl + '" style="width:300px;height:170px;"></div><div class = "beer-info"><div class="beer-name">' + quote.beer +
+        '</div> <span class="beer-intro"> ' + '- ' + quote.description + '</span> </div></div>');
     container.append(quoteElement);
-    document.getElementById("beer-pic-" + quote.index).src = quote.image;
+    document.getElementById("beer-pic-" + quote._id).src = quote.imageurl;
+}
+
+function validateImageURL(url) {    
+    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    var image = url.substring(url.length - 4);
+    return regexp.test(url) && (image === '.png' || image === '.jpg' || image === '.gif' || image === 'jpeg');    
 }
 
 function displayQuotes(quotes) {
     var quotesContainer = $('#reviews-container').empty();
+    console.log(quotes);
     quotes.forEach(function(quote, index) {
         displayBeer(quotesContainer, quote);
     });
 }
 
 function search() {
-    var contentFunction = makeQuotesWhoseBeersNameStartWith(searchString);
-    displayQuotes(contentFunction());
-    return;
+    makeQuotesWhoseBeersNameStartWith(searchString);
 }
 
 function makeQuotesWhoseBeersNameStartWith(prefix) {
     var quotes = [];
-    return function() {
-        ALL_QUOTES.forEach(function(object, index) {
-            if (object.beer[0] == prefix || prefix === "") {
-                quotes.push(object);
+    if (typeof prefix !== "undefined") {
+        for(var i = 0; i < ALL_QUOTES.length; i++) {
+            if(ALL_QUOTES[i].beer.startsWith(prefix)) {
+                quotes.push(ALL_QUOTES[i]);
             }
-        });
-
-        return quotes;
-    };
+        }
+        displayQuotes(quotes);
+    }
 }
 
 function setup() {
@@ -110,23 +75,26 @@ function setup() {
 }
 
 function displayAllQuotes() {
-    displayQuotes(ALL_QUOTES);
+    var token = JSON.parse(localStorage.getItem('webToken'));
+    console.log(token);
+    $.ajax({
+        url: 'https://csse280-beerup-backend.herokuapp.com/beers/' + token.token,
+        type: 'GET',
+        success: function(data) {
+            ALL_QUOTES = data;
+            displayQuotes(ALL_QUOTES);
+        },
+        error: function(request, status, error) {
+            console.log(error);
+            console.log(status);
+        }
+    });
 }
 
 $(window).on('load', function() {
     //load in initial state
-    setup();
-});
-
-
-function s() {
-    searchString = $('#search').val();
-    search();
-}
-
-
-
-$(document).ready(function() {
+    detect();
+    var token = JSON.parse(localStorage.getItem('webToken'));
 
     //When user click submit, add to db
     var addbeer = document.getElementById("addbeer");
@@ -134,35 +102,32 @@ $(document).ready(function() {
         var beername = document.getElementById("beer").value;
         var description = document.getElementById("description").value;
         var imgURL = document.getElementById("imgURL").value;
-
-
-        //All data here, ready
-        ALL_QUOTES.push({ index: ALL_QUOTES.length, image: imgURL, introduction: description, beer: beername });
-
-        var token = JSON.parse(localStorage.getItem('webToken'));
-        if (token.expire > Date.now()) {
-            $.ajax({
-                url: 'https://csse280-beerup-backend.herokuapp.com/reviews/addreview/' + $('#beerName').val() + '/' + $('#breweryName').val() + '/' + $('#rating').val() + '/' + $('#review').val(),
-                type: 'PUT',
-                data: token,
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function(request, status, error) {
-                    alert(error);
-                }
-            });
+        if(validateImageURL(imgURL) && beername != '' && description != '') {
+            if (token.expire > Date.now()) {
+                $.ajax({
+                    url: 'https://csse280-beerup-backend.herokuapp.com/beers/addbeer/' + beername + '/' + description,
+                    type: 'POST',
+                    data: { token: token.token, imageurl: imgURL },
+                    success: function(data) {
+                        console.log(data);
+                        displayAllQuotes();
+                    },
+                    error: function(request, status, error) {
+                        console.log(error);
+                        console.log(status);
+                    }
+                });
+            } else {
+                window.location.href = "./login.html";
+                alert('Token expired. Please login again!');
+            }
         } else {
-            window.location.href = "./login.html";
-            alert('Token expired. Please login again!');
+            alert('Invalid URL or empty input!');
         }
-        displayAllQuotes();
     });
 
-
-
+    setup();
 });
-
 
 function detect() {
     var date = new Date();
@@ -210,7 +175,7 @@ function detect() {
             '<span >LOG OFF</span>' +
             '</a>' +
             '</button>' +
-            '<input oninput = "s()" type="text" id="search">' +
+            '<input type="text" id="search">' +
             '<button class="button" style="display: inline-block">' +
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
@@ -231,13 +196,13 @@ function detect() {
             '<span>LOG IN</span>' +
             '</a>' +
             '</button>' +
-            '<button class="button" style="display: inline-block">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="./register.html">' +
             '<span>REGISTER</span>' +
             '</a>' +
             '</button>' +
-            '<input oninput = "s()" type="text" id="search">' +
-            '<button class="button" style="display: inline-block">' +
+            '<input type="text" id="search">' +
+            '<button class="button">' +
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
             '</a>' +
@@ -245,9 +210,15 @@ function detect() {
         );
         buttonContainer.append(buttonelement);
     }
+    $('#search').on('input', function() {
+        searchString = $(this).val();
+        search();
+    });
 }
 
 function logoff() {
     localStorage.clear();
     detect();
 }
+
+

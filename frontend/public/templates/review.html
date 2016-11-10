@@ -13,34 +13,34 @@
     <h1>Beer Up</h1>
     <div class="body-content">
         <div id="menu-container" class="menu-buttons">
-            <button class="button" style="display: inline-block">
+            <button class="button">
                     <a class = "nounderline" href="../index.html">
                         <span >MAIN</span>
                     </a>
                 </button>
-            <button class="button" style="display: inline-block">
+            <button class="button">
                     <a class = "nounderline" href="./mylist.html">
                         <span >MY LIST</span>
                     </a>
                 </button>
 
-            <button class="button" style="display: inline-block">
+            <button class="button">
                     <a class = "nounderline" href="./review.html">
                         <span >REVIEW</span>
                     </a>
                 </button>
-            <button class="button" style="display: inline-block">
+            <button class="button">
                     <a class = "nounderline" href="./login.html">
                         <span>LOGIN</span>
                     </a>
                 </button>
-            <button class="button" style="display: inline-block">
+            <button class="button">
                     <a class = "nounderline" href="./register.html">
                         <span>REGISTER</span>
                     </a>
                 </button>
             <input type="text" name="search">
-            <button class="button" style="display: inline-block">
+            <button class="button">
                     <a class = "nounderline" href="./search.html">
                         <span >SEARCH</span>
                     </a>
@@ -52,8 +52,8 @@
 
     <div class="form-style">
         <legend><span class="number">1</span> Add Review!</legend>
-        <input type="text" id="beerName" name="field1" placeholder="Beer Name *">
-        <input type="text" id="breweryName" name="field2" placeholder="Brewery Name *">
+        <input type="text" id="beerName" name="field1" placeholder="Beer Name *" required>
+        <input type="text" id="breweryName" name="field2" placeholder="Brewery Name *" required>
         <select id="rating" name="field4">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -61,7 +61,7 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-        <textarea name="field3" id="review" placeholder="Review *"></textarea>
+        <textarea name="field3" id="review" placeholder="Review *" required></textarea>
         <button id="addReview" type="button">Add review!</button>
     </div>
 </body>

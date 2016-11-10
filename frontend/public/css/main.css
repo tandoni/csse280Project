@@ -6,6 +6,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    zoom: 60%;
 }
 
 .welcome {
@@ -22,16 +23,18 @@ html {
 }
 
 .beer-name {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .beer-intro {
-    font-size: 25px;
+    font-size: 40px;
 }
 
 .beer-info {
     color: black;
     display: inline-block;
+    margin-left: 70px;
+    font-size: 40px;
 }
 
 .beer-token {
@@ -131,6 +134,7 @@ body {
     transition: all 0.5s;
     cursor: pointer;
     margin-top: 5px;
+    display: inline-block;
 }
 
 .button span {
@@ -173,6 +177,16 @@ body {
     margin-bottom: 100px;
     width: 850px;
     /*display: inline-block;*/
+}
+
+#mainpage_switch_img {
+    width:1200px;
+    height:675px;
+}
+
+#mainpage_switch_img2 {
+    width:700px;
+    height:400px;
 }
 
 h2 {

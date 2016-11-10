@@ -109,6 +109,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    zoom: 60%;
 }
 
 div.author-quote {
@@ -170,6 +171,21 @@ body {
     margin-top: 5px;
 }
 
+#deleteButton, #updateButton {
+    margin: 2px;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    /*font-size: 28px;*/
+    padding: 20px;
+    /*width: 250px;*/
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
 .button span {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
@@ -225,10 +241,24 @@ h2 {
 
 .beer-intro {
     font-size: 25px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.beer-intro-user {
+    font-size: 35px;
+    float: right;
+    margin-right: 50px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .beer-info {
     display: inline-block;
+}
+
+.review-button-block {
+    margin-top: 20px;
 }
 
 .my-review-token {

@@ -1,24 +1,40 @@
 $(document).ready(function() {
-    $('#addReview').on('click', function() {
-        console.log('asdasd');
-        var token = JSON.parse(localStorage.getItem('webToken'));
-        if (token.expire > Date.now()) {
-            $.ajax({
-                url: 'https://csse280-beerup-backend.herokuapp.com/reviews/addreview/' + $('#beerName').val() + '/' + $('#breweryName').val() + '/' + $('#rating').val() + '/' + $('#review').val(),
-                type: 'POST',
-                data: token,
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function(request, status, error) {
-                    alert(error);
-                }
-            });
-        } else {
-            window.location.href = "./login.html";
-            alert('Token expired. Please login again!');
-        }
-    });
+    var name = $('#beerName').val();
+    var brewery = $('#breweryName').val();
+    var review = $('#review').val();
+     
+        $('#addReview').on('click', function() {
+            if (name == '' || brewery == '' || review == '') {
+                alert('Please enter all inputs');
+            } else {
+            // console.log('asdasd');
+            var token = JSON.parse(localStorage.getItem('webToken'));
+            // if (token.expire > Date.now()) {
+                $.ajax({
+                    url: 'https://csse280-beerup-backend.herokuapp.com/reviews/addreview/' + name + '/' + brewery + '/' + $('#rating').val() + '/' + review,
+                    type: 'POST',
+                    data: token,
+                    success: function(data) {
+                        console.log(data);
+                        if (data.message === false) {
+                            window.location.href = "./login.html";
+                            alert('Token expired. Please login again!');
+                            localStorage.clear();
+                        } else {
+                            window.location.href = "./mylist.html";
+                        }
+                    },
+                    error: function(request, status, error) {
+                        alert(error);
+                    }
+                });
+            }
+            // } else {
+            //     window.location.href = "./login.html";
+            //     alert('Token expired. Please login again!');
+            //     localStorage.clear();
+            // }
+        });
 });
 
 function detect() {

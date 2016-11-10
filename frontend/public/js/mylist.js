@@ -1,41 +1,23 @@
 var searchString;
 
-var ALL_QUOTES = [{
-        index: "0",
-        review: "Welcome every morning with a smile. Look on the new day as another special gift from your Creator, another golden opportunity.",
-    },
-    {
-        index: "1",
-        review: "Happiness cannot be traveled to, owned, earned, or worn.It is the spiritual experience of living every minute with love, grace & gratitude.",
-    },
-    {
-        index: "2",
-        review: "Though no one can go back and make a brand new start, anyone can start from now and make a brand new ending",
-    },
-    {
-        index: "3",
-        review: "Accept responsibility for your life.Know that it is you who will get you where you want to go, no one else.",
-    },
-    {
-        index: "4",
-        review: "Surround yourself with only people who are going to lift you higher.",
-    },
-    {
-        index: "5",
-        review: "Nobody ever wrote down a plan to be broke, fat, lazy, or stupid.Those things are what happen when you don’t have a plan.",
-    }
-];
+var ALL_QUOTES = [];
 
 // Use this to store user's choice
 var userChoice = 'all';
 
 // Use this to update the search string
 var searchString;
+var currQuote = '';
 
 function displayBeer(container, quote) {
-    var quoteElement = $('<div id = "my-review-' + quote.index + '" class="my-review-token"><div class = "my-review"><span class="beer-intro">' + quote.review + '</span> </div><div class ="review-button-block"> <button onclick = "deleteCurrent(' + quote.index + ')" class = "button" id = "review-button-' +
-        quote.index + '><a class = "nounderline"><span>DELETE</span></a></button></div></div>');
+    var quoteElement = $('<div class="my-review-token"><div class="my-review"><span class="beer-intro">Beer Name: ' +
+      quote.beerName + '</span><br /><span class="beer-intro">Rating: ' + quote.rating +
+       ' </span> <br /><span class="beer-intro">Review: ' + quote.review +
+       ' </span><br /> <span class="beer-intro-user">-  ' + quote.firstName + ' ' + quote.lastName +
+        ' </span> </div><div class="review-button-block"> <button onclick="updateCurrent("' + 
+      quote._id + '")" id="updateButton">UPDATE</button> <button onclick="deleteCurrent()" id="deleteButton">DELETE</button></div></div>');
     container.append(quoteElement);
+    currQuote = quote;
 }
 
 function displayQuotes(quotes) {
@@ -45,16 +27,24 @@ function displayQuotes(quotes) {
     });
 }
 
-function deleteCurrent(index) {
+function deleteCurrent() {
     var realIndex = -1;
     for (i = 0; i < ALL_QUOTES.length; i++) {
-        if (ALL_QUOTES[i].index == index) {
+        if (ALL_QUOTES[i]._id == currQuote._id) {
             realIndex = i;
         }
     }
-
-    ALL_QUOTES.splice(realIndex, 1);
-    displayQuotes(ALL_QUOTES);
+    var token = JSON.parse(localStorage.getItem('webToken'));
+    $.ajax({
+          type: "DELETE",
+          url: 'https://csse280-beerup-backend.herokuapp.com/reviews/' + token,
+          data: {id: ALL_QUOTES[realIndex]._id },
+          success: function(data) {
+            console.log('review deleted');
+            displayAllQuotes();
+          },
+          dataType: 'JSON',
+    });
 }
 
 function search() {
@@ -80,7 +70,19 @@ function setup() {
 }
 
 function displayAllQuotes() {
-    displayQuotes(ALL_QUOTES);
+    var token = JSON.parse(localStorage.getItem('webToken'));
+    $.ajax({
+        url: 'https://csse280-beerup-backend.herokuapp.com/reviews/' + token.token,
+        type: 'GET',
+        success: function(data) {
+            ALL_QUOTES = data;
+            displayQuotes(ALL_QUOTES);
+        },
+        error: function(request, status, error) {
+            console.log(error);
+            console.log(status);
+        }
+    });
 }
 
 $(window).on('load', function() {
