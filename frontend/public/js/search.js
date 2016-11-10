@@ -50,38 +50,20 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
-
-    //When user click submit, add to db
-    var addbeer = document.getElementById("addbeer");
-    addbeer.addEventListener("click", function() {
-        addQuote();
-        displayAllQuotes();
-
-    });
 };
 
-function addQuote() {
-    var beername = document.getElementById("beer").value;
-    var description = document.getElementById("description").value;
-    var imgURL = document.getElementById("imgURL").value;
 
-
-    //All data here, ready
-    ALL_QUOTES.push({ index: ALL_QUOTES.length, image: imgURL, introduction: description, beer: beername });
-    alert(ALL_QUOTES.length);
-
-}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
 };
 
 // // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// };
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
 
 
 // Use this to store user's choice
@@ -139,4 +121,41 @@ $(window).on('load', function() {
 $('#search').on('input', function() {
     searchString = $(this).val();
     search();
+});
+
+$(document).ready(function() {
+
+    //When user click submit, add to db
+    var addbeer = document.getElementById("addbeer");
+    addbeer.addEventListener("click", function() {
+        var beername = document.getElementById("beer").value;
+        var description = document.getElementById("description").value;
+        var imgURL = document.getElementById("imgURL").value;
+
+
+        //All data here, ready
+        ALL_QUOTES.push({ index: ALL_QUOTES.length, image: imgURL, introduction: description, beer: beername });
+
+        var token = JSON.parse(localStorage.getItem('webToken'));
+        if (token.expire > Date.now()) {
+            $.ajax({
+                url: 'https://csse280-beerup-backend.herokuapp.com/reviews/addreview/' + $('#beerName').val() + '/' + $('#breweryName').val() + '/' + $('#rating').val() + '/' + $('#review').val(),
+                type: 'PUT',
+                data: token,
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(request, status, error) {
+                    alert(error);
+                }
+            });
+        } else {
+            window.location.href = "./login.html";
+            alert('Token expired. Please login again!');
+        }
+        displayAllQuotes();
+    });
+
+
+
 });
