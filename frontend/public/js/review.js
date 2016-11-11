@@ -1,13 +1,12 @@
 $(document).ready(function() {
-    var name = $('#beerName').val();
-    var brewery = $('#breweryName').val();
-    var review = $('#review').val();
-
     $('#addReview').on('click', function() {
+        var name = $('#beerName').val();
+        var brewery = $('#breweryName').val();
+        var review = $('#review').val();
         if (name == '' || brewery == '' || review == '') {
             alert('Please enter all inputs');
         } else {
-            // console.log('asdasd');
+        // console.log('asdasd');
             var token = JSON.parse(localStorage.getItem('webToken'));
             // if (token.expire > Date.now()) {
             $.ajax({
@@ -29,11 +28,6 @@ $(document).ready(function() {
                 }
             });
         }
-        // } else {
-        //     window.location.href = "./login.html";
-        //     alert('Token expired. Please login again!');
-        //     localStorage.clear();
-        // }
     });
 });
 
@@ -41,17 +35,17 @@ function detect() {
     var date = new Date();
     var greeting = "";
     if (date.getHours() > 0 && date.getHours() < 6) {
-        greeting = "Having some beer before you sleep or keeping fit?";
+        greeting = "Have some beer before you sleep?";
     } else if (date.getHours() >= 6 && date.getHours() <= 11) {
-        greeting = "Greeting! A new day always begins with a cup of beer!";
+        greeting = "Greetings! A new day always begins with a glass of beer!";
     } else if (date.getHours() > 11 && date.getHours() <= 14) {
         greeting = "Want to have some beer during the lunch time?";
     } else if (date.getHours() > 14 && date.getHours() <= 17) {
-        greeting = "Hope you don't feel thirsty without having beer in the afternoon.";
+        greeting = "Hope you don't feel thirsty without having a beer in the afternoon.";
     } else if (date.getHours() > 17 && date.getHours() <= 19) {
-        greeting = "We can't have dinner without beer, don't we?";
+        greeting = "We can't have dinner without beer, can we?";
     } else {
-        greeting = "Have some beer with you friends in the evening?";
+        greeting = "Have some beer with your friends in the evening?";
     }
 
     if ((localStorage.getItem("username") != null && localStorage.getItem("username").length > 0)) {
@@ -59,13 +53,13 @@ function detect() {
         var buttonelement = $(
             '<div class = "welcome">' +
             greeting +
-            '&nbsp' +
+            '&nbsp<span id="loggedInUser">Welcome, ' + 
             localStorage.getItem("username") +
-            '.' +
+            '!</span>' +
             '</div>' +
             '<button class="button">' +
             '<a class = "nounderline" href="../index.html">' +
-            '<span >MAIN</span>' +
+            '<span >HOME</span>' +
             '</a>' +
             '</button>' +
             '<button class="button" >' +
@@ -77,7 +71,6 @@ function detect() {
             '<span>LOG OUT</span>' +
             '</a>' +
             '</button>' +
-            '<input type="text" name="search">' +
             '<button class="button" >' +
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +
@@ -91,7 +84,7 @@ function detect() {
         var buttonelement = $(
             '<button class="button" >' +
             '<a class = "nounderline" href="../index.html">' +
-            '<span >MAIN</span>' +
+            '<span >HOME</span>' +
             '</a>' +
             '</button>' +
             '<button class="button" >' +
@@ -104,7 +97,6 @@ function detect() {
             '<span>REGISTER</span>' +
             '</a>' +
             '</button>' +
-            '<input type="text" name="search">' +
             '<button class="button" >' +
             '<a class = "nounderline" href="./search.html">' +
             '<span >SEARCH</span>' +

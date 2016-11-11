@@ -4,20 +4,44 @@
 1 verbose cli   'start' ]
 2 info using npm@3.10.7
 3 info using node@v4.2.6
-4 verbose config Skipping project config: /Users/IshankTandon/.npmrc. (matches userconfig)
-5 verbose stack Error: ENOENT: no such file or directory, open '/Users/IshankTandon/package.json'
-5 verbose stack     at Error (native)
-6 verbose cwd /Users/IshankTandon/Dropbox/csse280 Web dev/project/backend
-7 error Darwin 16.0.0
-8 error argv "/Users/IshankTandon/.nvm/versions/node/v4.2.6/bin/node" "/Users/IshankTandon/.nvm/versions/node/v4.2.6/bin/npm" "start"
-9 error node v4.2.6
-10 error npm  v3.10.7
-11 error path /Users/IshankTandon/package.json
-12 error code ENOENT
-13 error errno -2
-14 error syscall open
-15 error enoent ENOENT: no such file or directory, open '/Users/IshankTandon/package.json'
-16 error enoent ENOENT: no such file or directory, open '/Users/IshankTandon/package.json'
-16 error enoent This is most likely not a problem with npm itself
-16 error enoent and is related to npm not being able to find a file.
-17 verbose exit [ -2, true ]
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle BeerUpServer@0.0.0~prestart: BeerUpServer@0.0.0
+6 silly lifecycle BeerUpServer@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle BeerUpServer@0.0.0~start: BeerUpServer@0.0.0
+8 verbose lifecycle BeerUpServer@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle BeerUpServer@0.0.0~start: PATH: /Users/IshankTandon/.nvm/versions/node/v4.2.6/lib/node_modules/npm/bin/node-gyp-bin:/Users/IshankTandon/Dropbox/csse280 Web dev/project/backend/untitled folder/node_modules/.bin:/Users/IshankTandon/.nvm/versions/node/v4.2.6/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/local/gcc-4.9.2/bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/2.6/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/microchip/xc8/v1.36/bin:/Applications/microchip/xc8/v1.36/bin
+10 verbose lifecycle BeerUpServer@0.0.0~start: CWD: /Users/IshankTandon/Dropbox/csse280 Web dev/project/backend/untitled folder
+11 silly lifecycle BeerUpServer@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
+12 silly lifecycle BeerUpServer@0.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle BeerUpServer@0.0.0~start: Failed to exec start script
+14 verbose stack Error: BeerUpServer@0.0.0 start: `node ./bin/www`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/IshankTandon/.nvm/versions/node/v4.2.6/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/IshankTandon/.nvm/versions/node/v4.2.6/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:821:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid BeerUpServer@0.0.0
+16 verbose cwd /Users/IshankTandon/Dropbox/csse280 Web dev/project/backend/untitled folder
+17 error Darwin 16.0.0
+18 error argv "/Users/IshankTandon/.nvm/versions/node/v4.2.6/bin/node" "/Users/IshankTandon/.nvm/versions/node/v4.2.6/bin/npm" "start"
+19 error node v4.2.6
+20 error npm  v3.10.7
+21 error code ELIFECYCLE
+22 error BeerUpServer@0.0.0 start: `node ./bin/www`
+22 error Exit status 1
+23 error Failed at the BeerUpServer@0.0.0 start script 'node ./bin/www'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the BeerUpServer package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./bin/www
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs BeerUpServer
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls BeerUpServer
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

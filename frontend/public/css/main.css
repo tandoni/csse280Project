@@ -1,6 +1,6 @@
 html {
     /*background-color: black;*/
-    min-width: 2000px;
+    width: 100%;
     background-image: url('../images/background.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -22,12 +22,40 @@ html {
     display: inline-block;
 }
 
+.addRev {
+    font-size: 20px;
+}
+
+#loggedInUser {
+    float: right;
+    margin-right: 40px;
+}
+
+#myBtn {
+    visibility: hidden;
+}
+
 .beer-name {
     font-size: 50px;
 }
 
 .beer-intro {
     font-size: 40px;
+}
+
+.deleteButton, .updateButton {
+    margin: 2px;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    /*font-size: 28px;*/
+    padding: 20px;
+    /*width: 250px;*/
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 .beer-info {
